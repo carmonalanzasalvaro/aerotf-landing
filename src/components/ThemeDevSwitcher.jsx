@@ -14,8 +14,12 @@ export default function ThemeDevSwitcher() {
   const [theme, setTheme] = useState("obsidian");
   const [mounted, setMounted] = useState(false);
 
+  const enabled =
+    process.env.NEXT_PUBLIC_ENABLE_THEME_SWITCHER === "true";
+
   useEffect(() => {
     setMounted(true);
+
     const saved = localStorage.getItem("aerotf-theme") || "obsidian";
     document.documentElement.setAttribute("data-theme", saved);
     setTheme(saved);
@@ -27,7 +31,7 @@ export default function ThemeDevSwitcher() {
     setTheme(nextTheme);
   };
 
-  if (!mounted || process.env.NODE_ENV === "production") return null;
+  if (!mounted || !enabled) return null;
 
   return (
     <div className="fixed bottom-5 right-5 z-[80]">
@@ -56,8 +60,12 @@ export default function ThemeDevSwitcher() {
                     <span>{item.label}</span>
 
                     <span className="flex items-center gap-1.5">
-                      <span className={`h-2.5 w-2.5 rounded-full theme-dot-${item.id}`} />
-                      <span className={`h-2.5 w-2.5 rounded-full theme-dot-2-${item.id}`} />
+                      <span
+                        className={`h-2.5 w-2.5 rounded-full theme-dot-${item.id}`}
+                      />
+                      <span
+                        className={`h-2.5 w-2.5 rounded-full theme-dot-2-${item.id}`}
+                      />
                     </span>
                   </button>
                 );
