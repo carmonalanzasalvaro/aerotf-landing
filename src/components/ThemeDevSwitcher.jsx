@@ -14,12 +14,8 @@ export default function ThemeDevSwitcher() {
   const [theme, setTheme] = useState("obsidian");
   const [mounted, setMounted] = useState(false);
 
-  const enabled =
-    process.env.NEXT_PUBLIC_ENABLE_THEME_SWITCHER === "true";
-
   useEffect(() => {
     setMounted(true);
-
     const saved = localStorage.getItem("aerotf-theme") || "obsidian";
     document.documentElement.setAttribute("data-theme", saved);
     setTheme(saved);
@@ -31,14 +27,14 @@ export default function ThemeDevSwitcher() {
     setTheme(nextTheme);
   };
 
-  if (!mounted || !enabled) return null;
+  if (!mounted) return null;
 
   return (
-    <div className="fixed bottom-5 right-5 z-[80]">
+    <div className="fixed bottom-5 right-5 z-[90]">
       <div className="flex flex-col items-end gap-3">
         {open && (
-          <div className="ui-glass min-w-[240px] rounded-[1.4rem] p-3 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
-            <div className="mb-3 px-2 text-[11px] uppercase tracking-[0.22em] text-white/45">
+          <div className="ui-glass min-w-[240px] rounded-[1.35rem] p-3 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <div className="mb-3 px-2 text-[11px] uppercase tracking-[0.22em] switcher-label">
               DEV themes
             </div>
 
@@ -51,10 +47,8 @@ export default function ThemeDevSwitcher() {
                     key={item.id}
                     type="button"
                     onClick={() => applyTheme(item.id)}
-                    className={`flex items-center justify-between rounded-xl border px-3 py-2 text-sm transition ${
-                      active
-                        ? "border-white/18 bg-white/10 text-white"
-                        : "border-white/8 bg-white/5 text-white/70 hover:bg-white/8 hover:text-white"
+                    className={`switcher-item ${
+                      active ? "switcher-item-active" : ""
                     }`}
                   >
                     <span>{item.label}</span>
@@ -77,7 +71,8 @@ export default function ThemeDevSwitcher() {
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="ui-glass rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80 shadow-[0_12px_35px_rgba(0,0,0,0.28)] transition hover:bg-white/10"
+          className="ui-glass rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] shadow-[0_12px_35px_rgba(0,0,0,0.28)] transition hover:translate-y-[-1px]"
+          style={{ color: "var(--foreground)" }}
         >
           DEV
         </button>

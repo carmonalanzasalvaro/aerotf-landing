@@ -34,7 +34,7 @@ export default function CTA() {
             </a>
 
             <a
-              href="tel:+34910000000"
+              href="tel:+34699493084"
               className="secondary-pill px-7 py-3 text-sm font-semibold"
             >
               Llamar ahora

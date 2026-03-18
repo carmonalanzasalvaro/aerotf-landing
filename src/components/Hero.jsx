@@ -11,131 +11,141 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden pt-24">
-      <div className="theme-glow-main absolute left-1/2 top-24 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full" />
-      <div className="theme-glow-side absolute right-[-8rem] top-28 h-[24rem] w-[24rem] rounded-full" />
+    <section className="relative overflow-hidden pb-14 pt-24 md:pb-20">
+      <div className="theme-glow-main absolute left-1/2 top-20 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full" />
+      <div className="theme-glow-side absolute right-[-8rem] top-24 h-[22rem] w-[22rem] rounded-full" />
 
-      <div className="section-shell relative z-10 grid min-h-[90vh] items-center gap-16 py-16 lg:grid-cols-[1fr_1fr]">
-        <div className="max-w-3xl">
+      <div className="section-shell relative z-10">
+        <div className="hero-bleed-wrap">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65 }}
-            className="mb-7 inline-flex rounded-full border px-4 py-2 text-xs uppercase tracking-[0.24em]"
-            style={{ borderColor: "var(--line)", background: "var(--tag-bg)", color: "var(--tag-text)" }}
+            transition={{ duration: 0.85 }}
+            className="hero-banner-shell"
           >
-            Aerospace Fasteners · Tools · Components
-          </motion.div>
+            {/* DESKTOP */}
+            <div className="absolute inset-0 hidden lg:block">
+              <Image
+                src="/images/banners/bolt-hero-banner.png"
+                alt="Tornillería y fijaciones industriales AeroTF"
+                fill
+                priority
+                className="hero-banner-image object-cover object-left"
+                sizes="100vw"
+              />
+            </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.05 }}
-            className="section-title text-gradient"
-          >
-            Precisión industrial para aviación, defensa y espacio.
-          </motion.h1>
+            <div className="hero-banner-veil hidden lg:block" />
 
-          <motion.p
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.12 }}
-            className="section-copy mt-8 max-w-2xl text-lg md:text-[1.34rem]"
-          >
-            AeroTF conecta fabricantes y operadores con tornillería,
-            herramientas y componentes aeronáuticos de alta exigencia, con una
-            presencia de marca sobria, técnica y preparada para transmitir
-            confianza desde el primer vistazo.
-          </motion.p>
+            <div className="relative z-10 hidden min-h-[43rem] items-center lg:grid lg:grid-cols-[1fr_0.96fr]">
+              <div />
 
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.2 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
-          >
-            <a href="#sectores" className="primary-pill px-7 py-3 text-sm font-semibold">
-              Explorar sectores
-            </a>
+              <div className="hero-banner-copy px-10 py-14 xl:px-14">
+                <div className="ui-tag inline-flex px-4 py-2 text-xs uppercase tracking-[0.22em]">
+                  Aerospace Fasteners · Tools · Components
+                </div>
 
-            <a href="#contacto" className="secondary-pill px-7 py-3 text-sm font-semibold">
-              Contactar con AeroTF
-            </a>
-          </motion.div>
+                <h1 className="section-title mt-6">
+                  Precisión industrial para aviación, defensa y espacio.
+                </h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.28 }}
-            className="mt-14 grid max-w-2xl gap-4 sm:grid-cols-3"
-          >
-            {stats.map(([value, label]) => (
-              <div key={label} className="ui-soft-card rounded-[1.65rem] px-5 py-5">
-                <div className="text-[2rem] font-semibold tracking-tight">{value}</div>
-                <div className="mt-1 text-sm ui-card-copy">{label}</div>
+                <p className="section-copy mt-6 max-w-[34rem] text-lg md:text-[1.25rem]">
+                  AeroTF conecta fabricantes y operadores con tornillería,
+                  herramientas y componentes aeronáuticos de alta exigencia, con
+                  una presencia de marca más sólida, técnica y creíble.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <a
+                    href="#sectores"
+                    className="primary-pill px-7 py-3 text-sm font-semibold"
+                  >
+                    Explorar sectores
+                  </a>
+
+                  <a
+                    href="#contacto"
+                    className="secondary-pill px-7 py-3 text-sm font-semibold"
+                  >
+                    Contactar con AeroTF
+                  </a>
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* MOBILE / TABLET */}
+            <div className="lg:hidden">
+              <div className="relative h-[22rem] sm:h-[26rem]">
+                <Image
+                  src="/images/banners/bolt-hero-banner.png"
+                  alt="Tornillería y fijaciones industriales AeroTF"
+                  fill
+                  priority
+                  className="hero-banner-image object-cover object-left"
+                  sizes="100vw"
+                />
+
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(var(--accent-2-rgb),0.08) 38%, var(--bg-mid) 100%)",
+                  }}
+                />
+              </div>
+
+              <div className="px-6 py-7 sm:px-8 sm:py-8">
+                <div className="ui-tag inline-flex px-4 py-2 text-xs uppercase tracking-[0.22em]">
+                  Aerospace Fasteners · Tools · Components
+                </div>
+
+                <h1 className="section-title mt-6">
+                  Precisión industrial para aviación, defensa y espacio.
+                </h1>
+
+                <p className="section-copy mt-6 max-w-[34rem] text-lg">
+                  AeroTF conecta fabricantes y operadores con tornillería,
+                  herramientas y componentes aeronáuticos de alta exigencia, con
+                  una presencia de marca más sólida, técnica y creíble.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <a
+                    href="#sectores"
+                    className="primary-pill px-7 py-3 text-sm font-semibold"
+                  >
+                    Explorar sectores
+                  </a>
+
+                  <a
+                    href="#contacto"
+                    className="secondary-pill px-7 py-3 text-sm font-semibold"
+                  >
+                    Contactar con AeroTF
+                  </a>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.985, y: 16 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.95, delay: 0.1 }}
-          className="relative mx-auto w-full max-w-[680px]"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, delay: 0.18 }}
+          className="mt-5 grid gap-4 sm:grid-cols-3"
         >
-          <div className="ui-glass relative overflow-hidden rounded-[2.4rem] p-6 md:p-8">
-            <div className="theme-surface-accent absolute inset-0" />
-            <div className="theme-glow-core absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full" />
-
-            <div className="relative flex items-start justify-between gap-5">
-              <div className="max-w-sm">
-                <div className="kicker">AeroTF Supply Network</div>
-                <div className="mt-4 text-[1.8rem] font-semibold leading-tight md:text-[2.15rem]">
-                  Fasteners engineered for critical environments
-                </div>
+          {stats.map(([value, label]) => (
+            <div
+              key={label}
+              className="ui-soft-card rounded-[1.55rem] px-5 py-5"
+            >
+              <div className="text-[2rem] font-semibold tracking-tight">
+                {value}
               </div>
-
-              <div className="theme-status-dot mt-1 h-3 w-3 rounded-full" />
+              <div className="ui-card-copy mt-1 text-sm">{label}</div>
             </div>
-
-            <div className="relative mt-8 h-[25rem] md:h-[29rem]">
-              <div className="hero-orbit h-[22rem] w-[22rem]" />
-              <div className="hero-orbit h-[17rem] w-[17rem]" />
-              <div className="hero-orbit h-[12rem] w-[12rem]" />
-
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
-                className="hero-orbit h-[22rem] w-[22rem] border-dashed"
-              />
-
-              <motion.div
-                animate={{ y: [0, -6, 0], rotate: [-2, 0, -2] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 flex items-center justify-center px-8 md:px-10"
-              >
-                <Image
-                  src="/images/products/pro1.webp"
-                  alt="Fasteners aeronáuticos AeroTF"
-                  width={1200}
-                  height={900}
-                  priority
-                  className="h-auto w-full max-w-[560px] object-contain drop-shadow-[0_40px_90px_rgba(0,0,0,0.6)]"
-                />
-              </motion.div>
-            </div>
-
-            <div className="relative mt-2 flex flex-wrap gap-3">
-              {["Structural fasteners", "Critical hardware", "Precision supply"].map(
-                (item) => (
-                  <div key={item} className="ui-tag px-4 py-2 text-sm">
-                    {item}
-                  </div>
-                )
-              )}
-            </div>
-          </div>
+          ))}
         </motion.div>
       </div>
     </section>

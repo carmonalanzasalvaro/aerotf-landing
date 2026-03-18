@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" data-theme="midnight">
+    <html lang="es" data-theme="obsidian">
       <body>
         {children}
         <ThemeDevSwitcher />
